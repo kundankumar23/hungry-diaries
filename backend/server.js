@@ -6,6 +6,8 @@ const connectDB = require("./config/connectionDB.js")
 const PORT = process.env.PORT || 3000
 connectDB()
 
+app.use(express.json());            // It is middleware that parses JSON data sent by the client.
+
 app.use("/recipe", require("./routes/recipe.js"))
 
 app.listen(PORT, (err) => {
