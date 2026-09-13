@@ -4,6 +4,8 @@ const dotenv = require("dotenv").config()
 
 const PORT = process.env.PORT || 3000
 
+app.use("/recipe", require("./routes/recipe.js"))
+
 app.listen(PORT, (err) => {
-    console.log(`App is listening on port ${PORT}`);
+    console.log(`App is listening on PORT ${PORT}`);
 })
