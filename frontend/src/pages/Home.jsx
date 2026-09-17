@@ -7,22 +7,38 @@ import RecipeItems from '../components/RecipeItems'
 export default function Home() {
   return (
     <>
-        <section className='home'>
-            <div className="left">
-                <h1>Hungry Diaries</h1>
-                <h5>Hungry for something delicious? Explore recipes, share your own creations, and make every bite a part of your story. ❤️</h5>
-                <button>Share Your Recipe</button>
-            </div>
-            <div className="right">
-                <img src={foodRecipe} width="500px" />
-            </div>
-        </section>
-        <div className="tagline">
-            <h3>भूख लगी है... अब कुछ स्वादिष्ट हो जाए! 😋</h3>
+        <section className="home">
+
+        <div className="left">
+          <span className="welcome">🍴 Welcome to Hungry Diaries</span>
+
+          <h1>
+            Delicious Recipes,
+            <br />
+            <span>Made With Love ❤️</span>
+          </h1>
+
+          <h5>
+            Hungry for something delicious? Explore recipes, share your
+            own creations, and make every bite a part of your story.
+          </h5>
+
+          <button>Share Your Recipe</button>
         </div>
-        <div className="recipe">
-            <RecipeItems/>
+
+        <div className="right">
+          <img src={foodRecipe} alt="Delicious food" />
         </div>
+
+      </section>
+
+      <div className="tagline">
+        <h3>भूख लगी है... अब कुछ स्वादिष्ट हो जाए! 😋</h3>
+      </div>
+
+      <div className="recipe">
+        <RecipeItems />
+      </div>
     </>
   )
 }

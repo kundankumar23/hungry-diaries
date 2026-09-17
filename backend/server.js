@@ -10,6 +10,7 @@ connectDB()
 app.use(express.json());            // It is middleware that parses JSON data sent by the client.
 app.use(cors());
 
+app.use("/", require("./routes/user.js"))
 app.use("/recipe", require("./routes/recipe.js"))
 
 app.listen(PORT, (err) => {
