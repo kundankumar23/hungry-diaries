@@ -1,4 +1,17 @@
 const Recipes = require("../models/recipe");
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/images')
+  },
+  filename: function (req, file, cb) {
+    const filename = Date.now() + '-' + file.fieldname
+    cb(null, filename)
+  }
+})
+
+const upload = multer({ storage : storage })
 
 const getRecipes = async(req, res) => {
     
@@ -15,18 +28,22 @@ const getRecipe = async(req, res) => {
 }
 
 const addRecipe = async(req, res) => {
+
+    console.log(req.user);
     
     const {title, ingredients, instructions, time} = req.body;
 
     if(!title || !ingredients || !instructions) {
-        res.json({message: "Required field can't be empty"});
+        return res.json({message: "Required field can't be empty"});
     }
 
     const newRecipe = await Recipes.create({
         title,
         ingredients,
         instructions,
-        time
+        time,
+        coverImage: req.file.filename,
+        createdBy : req.user.id
     })
 
     return res.json(newRecipe)
@@ -54,4 +71,4 @@ const deleteRecipe = (req, res) => {
     res.json({message:"hello"})
 }
 
-module.exports = {getRecipes, getRecipe, addRecipe, editRecipe, deleteRecipe}
+module.exports = {getRecipes, getRecipe, addRecipe, editRecipe, deleteRecipe, upload}

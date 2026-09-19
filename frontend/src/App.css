@@ -66,7 +66,7 @@ section{
 .home{
   min-height: 520px;
   padding-top: 100px;
-  padding-bottom: 50px;
+  /* padding-bottom: 50px; */
 
   display: flex;
   align-items: center;
@@ -125,12 +125,12 @@ section{
   flex: 1;
 
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
 }
 
 .home .right img {
-  width: 480px;
+  width: 700px;
   max-width: 100%;
   height: auto;
 
@@ -177,11 +177,6 @@ section{
   color: #666666;
 }
 
-.bg svg{
-  position: absolute;
-  bottom: 0px;
-}
-
 .tagline {
   width: 100%;
 
@@ -194,7 +189,7 @@ section{
 
   font-size: 20px;
 
-  margin-bottom: 40px;
+  margin: 40px 0;
 
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }
@@ -205,11 +200,11 @@ section{
 }
 
 .card-container{
- width: 90%;
+  width: 90%;
   margin: 0 auto 80px;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 28px;
 
   cursor: pointer;
@@ -456,13 +451,220 @@ section{
   color:red;
   font-size: 13px;
 }
+
+
+/* Add Recipe :  */
 .container{
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
+  align-items: flex-start;
+
+  padding: 110px 20px 80px;
 }
+
+/* Form Card */
+.container .form {
+  width: 650px;
+  max-width: 100%;
+
+  background-color: #FFFDFB;
+
+  padding: 35px 40px 40px;
+
+  border-radius: 16px;
+
+  border: 1px solid #F1DFDB;
+
+  box-shadow: 0 10px 30px rgba(80, 40, 30, 0.10);
+
+  text-align: left;
+}
+
+/* Each field */
+.container .form .form-control {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 20px;
+
+  gap: 8px;
+}
+
+/* Labels */
+.container .form .form-control label {
+  display: block;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  color: #2B2B2B;
+
+  margin-left: 2px;
+}
+
+/* Text & Time inputs */
+.container .form .form-control .input {
+  width: 100%;
+  height: 46px;
+
+  padding: 0 14px;
+
+  font-size: 15px;
+
+  color: #2B2B2B;
+
+  background-color: #FFFFFF;
+
+  border: 1px solid #E5C9C9;
+  border-radius: 8px;
+
+  outline: none;
+
+  transition: all 0.25s ease;
+}
+
+/* Input focus */
+.container .form .form-control .input:focus {
+  border-color: #E23744;
+
+  box-shadow:
+    0 0 0 3px rgba(226, 55, 68, 0.10);
+}
+
+/* Textarea */
+.container .form .form-control .input-textarea {
+  width: 100%;
+
+  min-height: 120px;
+
+  padding: 12px 14px;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+
+  line-height: 1.6;
+
+  color: #2B2B2B;
+
+  background-color: #FFFFFF;
+
+  border: 1px solid #E5C9C9;
+  border-radius: 8px;
+
+  outline: none;
+
+  resize: vertical;
+
+  transition: all 0.25s ease;
+}
+
+/* Textarea focus */
+.container .form .form-control .input-textarea:focus {
+  border-color: #E23744;
+
+  box-shadow:
+    0 0 0 3px rgba(226, 55, 68, 0.10);
+}
+
+/* File input */
+.container .form input[type="file"] {
+  width: 100%;
+  height: 58px;
+
+  padding: 10px;
+
+  background-color: #FFFFFF;
+
+  border: 1px solid #E5C9C9;
+  border-radius: 8px;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #666666;
+
+  cursor: pointer;
+}
+
+.container .form input[type="file"]::file-selector-button {
+  height: 38px;
+
+  margin: 0 10px 0 5px;
+
+  padding: 0 18px;
+
+  background-color: #FFF0F1;
+  color: #E23744;
+
+  border: 1px solid #F2C5C9;
+  border-radius: 7px;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.container .form .form-control:has(input[type="file"]) {
+  gap: 8px;
+}
+
+.container .form .form-control:has(input[type="file"]) input[type="file"] {
+  height: 58px;
+  padding: 10px;
+}
+
+.container .form input[type="file"]::file-selector-button:hover {
+  background-color: #E23744;
+  color: #FFFFFF;
+}
+
+/* Add Recipe button */
+.container .form button {
+  display: block;
+
+  width: 160px;
+  height: 46px;
+
+  margin: 30px auto 0;
+
+  background-color: #E23744;
+
+  color: #FFFFFF;
+
+  border: none;
+
+  border-radius: 8px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 6px 15px rgba(226, 55, 68, 0.22);
+
+  transition: all 0.3s ease;
+}
+
+
+.container .form button:hover {
+  background-color: #C92A36;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 20px rgba(226, 55, 68, 0.28);
+}
+
+
+/* _________________________________ */
 
 .add-recipe{
   width: 100%;
