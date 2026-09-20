@@ -57,7 +57,8 @@ const editRecipe = async(req, res) => {
 
     try {
         if(recipe) {
-            await Recipes.findByIdAndUpdate(req.params.id, req.body, {new:true})
+            let coverImage = req.file?.filename ? req.file?.filename : recipe.coverImage
+            await Recipes.findByIdAndUpdate(req.params.id, {...req.body, coverImage}, {new:true})
             res.json({title, ingredients, instructions, time})
         }
     }
@@ -67,8 +68,14 @@ const editRecipe = async(req, res) => {
 
 }
 
-const deleteRecipe = (req, res) => {
-    res.json({message:"hello"})
+const deleteRecipe = async(req, res) => {
+    try {
+        await Recipes.deleteOne({_id:req.params.id})
+        res.json({status:"ok"})
+    }
+    catch(err) {
+        return res.status(400).json({message:"error"})
+    }
 }
 
 module.exports = {getRecipes, getRecipe, addRecipe, editRecipe, deleteRecipe, upload}

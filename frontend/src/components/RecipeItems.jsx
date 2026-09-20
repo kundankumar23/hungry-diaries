@@ -1,13 +1,29 @@
-import React from 'react'
-import { useLoaderData } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useLoaderData } from 'react-router-dom'
 import foodImg from '../assets/dosa.jpg'
 import { BsStopwatchFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa6";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+// import recipe from '../../../backend/models/recipe';
+import axios from 'axios';
 
 export default function RecipeItems() {
 
-  const allRecipes = useLoaderData()
+  const recipes = useLoaderData();
+  const [allRecipes, setAllRecipes] = useState()
+  let path = window.location.pathname === "/myRecipe" ? true : false;
   console.log(allRecipes);
+
+  useEffect(() => {
+    setAllRecipes(recipes)
+  },[recipes])
+
+  const onDelete = async(id) => {
+    await axios.delete(`http://localhost:5000/recipe/${id}`)
+    .then((res) => console.log(res))
+    setAllRecipes(recipes => recipes.filter(recipe => recipe._id !== id))
+  }
     
   return (
     <div className="card-container">
@@ -19,8 +35,12 @@ export default function RecipeItems() {
               <div className="title">{item.title}</div>
               <div className='divide'></div>
               <div className="icons">
-                <div className="timer"><BsStopwatchFill /><span> 25 min</span></div>
-                <FaHeart />
+                <div className="timer"><BsStopwatchFill /><span> {item.time}</span></div>
+                {(!path) ? <FaHeart /> :
+                <div className="action">
+                  <Link to={`/editRecipe/${item._id}`} className="editIcon"><FaEdit /></Link>
+                  <MdDelete onClick={()=>onDelete(item._id)} className='deleteIcon' />
+                </div>}
               </div>
             </div>
           </div>

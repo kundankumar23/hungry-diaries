@@ -21,8 +21,11 @@ export default function Home() {
     }
   }
 
+  let path = window.location.pathname === "/" ? true : false;
+
   return (
     <>
+        {(path) ? (<> 
         <section className="home">
 
         <div className="left">
@@ -51,6 +54,7 @@ export default function Home() {
       <div className="tagline">
         <h3>भूख लगी है... अब कुछ स्वादिष्ट हो जाए! 😋</h3>
       </div>
+      </>) : ""}
 
       {(isOpen) && <Modal onClose={()=>setIsOpen(false)}><InputForm setIsOpen={()=>setIsOpen(false)}/></Modal>}
 
